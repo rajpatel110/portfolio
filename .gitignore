@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+references/
+*.tsbuildinfo
+.env*
+!.env.example
+
+# Local-only output and provider state
+*.log
+.vercel/
+coverage/
+.DS_Store
+Thumbs.db
