@@ -14,6 +14,6 @@ export type SkillGroup = { title: string; context: string; items: readonly Skill
 export const skillGroups: readonly SkillGroup[] = [
   { title: "Frontend", context: "Interfaces in PrepPilot & DevLink", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "Vite"].map(name => ({ name })) },
   { title: "Backend & data", context: "APIs, persistence & authentication", items: ["Node.js", "Express", "MongoDB", "MongoDB Atlas", "Mongoose", "Better Auth", "JWT", "Zod"].map(name => ({ name })) },
-  { title: "Deployment & services", context: "Hosting and transactional email", items: [{ name: "Vercel", note: "Hosting" }, { name: "Brevo", note: "Current email integration" }, { name: "Resend", note: "Previous hands-on use" }] },
+  { title: "Deployment & services", context: "Hosting and transactional email", items: [{ name: "Vercel" }, { name: "Brevo" }, { name: "Resend" }] },
   { title: "Tools & fundamentals", context: "Development, testing & ongoing practice", items: ["Git & GitHub", "GitHub Actions CI", "npm", "Node.js test runner", "ESLint", "Prettier", "REST APIs", "DSA problem-solving"].map(name => ({ name })) },
 ];

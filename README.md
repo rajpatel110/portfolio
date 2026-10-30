@@ -1,34 +1,87 @@
-# Raj Patel — Portfolio
+# Raj Patel | Developer Portfolio
 
-Next.js 16.4.3 App Router, React, TypeScript, Tailwind CSS, custom CSS, GSAP, and @gsap/react. Features: hero/portrait, two featured projects, two compact projects, About, four Skills groups, and Contact. No form service, analytics, or credentials required locally. No deployment has been performed.
+A personal portfolio showcasing full-stack web applications, academic research, and the technologies behind them. Built by Raj Patel, a B.Tech Computer Science and Cyber Security student at Pranveer Singh Institute of Technology, graduating in 2027.
 
-## Local commands (PowerShell)
-Use Node.js 22.20+ and npm. Run from C:\PROJECTS\portfolio\portfolio:
+## Highlights
 
-```powershell
-npm.cmd ci
-npm.cmd run lint
-npm.cmd run typecheck
-npm.cmd run build
-npm.cmd start -- --port 3001
+- Responsive editorial design with an original cream, charcoal, and yellow palette.
+- Choreographed hero introduction and a desktop sticky Selected Work showcase.
+- Featured projects: **PrepPilot** and **DevLink**, with genuine project screenshots and source/live links.
+- Additional projects: **Vidloom** and **EEG Seizure Prediction**.
+- About, grouped skills, certifications, resume, and contact links with copy-email feedback.
+- Semantic markup, visible keyboard focus, reduced-motion fallbacks, and readable content before animation initializes.
+
+## Technology
+
+Next.js App Router · React · TypeScript · Tailwind CSS · custom CSS · GSAP · ScrollTrigger · @gsap/react
+
+## Getting started
+
+Use Node.js 22 and npm. Run these commands from the repository root:
+
+```bash
+npm ci
+npm run dev -- --port 3000
 ```
 
-Production preview: http://localhost:3001. Stop its existing terminal with Ctrl+C **before building again**. Build must finish successfully before start. Never replace .next under a running next start process. Details and the earlier missing-CSS diagnosis: [preview workflow](docs/PREVIEW_WORKFLOW.md).
+Open [localhost:3000](http://localhost:3000). In PowerShell, use `npm.cmd` if script execution policy blocks `npm`.
 
-For active development, stop production first and run `npm.cmd run dev -- --port 3001`. Use one preview mode at a time. No custom deployment configuration is needed for the installed Next.js version; Vercel can use its Next.js preset and repository root.
+## Validation
 
-## Content and assets
-- data/profile.ts: identity/contact. data/about.ts: biography and skills. data/projects.ts: projects and optional source/live/image fields.
-- docs/PROJECT_SOURCES.md: verified evidence, owner-supplied research details, and live-project limitations.
-- public/images/portrait.webp: actual optimized portrait. Original JPEG preserved unchanged in ignored references/portrait-source.jpg.
-- public/images/projects/preppilot.webp: genuine homepage capture. Other projects use typography; no fabricated screenshots.
-- app/icon.svg: original RP favicon. public/social-preview.png: original 1200×630 social card; editable SVG in public/brand/. public/apple-touch-icon.png: RP touch icon.
-- No public resume exists; no download is rendered. Keep private originals/references out of public/ and Git.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
-## Before deployment
-Choose the actual public portfolio URL. Set PORTFOLIO_SITE_URL to its HTTPS origin (no path/query/fragment) in hosting settings, then rebuild. Until configured, canonical, og:url, and social-image URL tags are deliberately omitted; localhost is never used as the public address. Open Graph/Twitter titles and descriptions are present, and the social image is ready. `.env.example` documents the optional setting; real .env files stay ignored.
+## Production preview
 
-Public claims and URLs must stay grounded in docs/PROJECT_SOURCES.md. EEG results remain owner-reported and preliminary; DevLink public-entry limitations remain explicit. Commits, pushes, and deployments require explicit user authorization.
+Stop any running development or production server for this checkout before building:
 
-## Motion and verification
-Native scrolling, one shared one-shot IntersectionObserver, GSAP context cleanup, and reduced-motion CSS. No continuous effects or smooth-scroll library. See docs/SCROLL_INVESTIGATION.md and docs/LAUNCH_READINESS.md. The reported scrolling lag has no confirmed cause or measured fix. Browser profiling/media emulation and clipboard-denial emulation have not been available in the permitted tool.
+```bash
+npm run build
+npm start -- --port 3000
+```
+
+Wait for the build to finish before starting the server. Stop it with **Ctrl+C** before rebuilding; replacing `.next` while `next start` is running can leave HTML referencing stale CSS or JavaScript assets. See [Preview workflow](docs/PREVIEW_WORKFLOW.md) for the detailed procedure.
+
+## Configuration
+
+No environment variables are required for local development. To enable canonical and social-preview URLs, configure the optional `PORTFOLIO_SITE_URL` with the portfolio's complete public HTTPS origin:
+
+```dotenv
+PORTFOLIO_SITE_URL=https://your-portfolio-domain.example/
+```
+
+Use the actual public domain, including `https://`, without credentials, additional paths, query parameters, or fragments. Leave this value unset locally. See `.env.example`; local environment files are ignored by Git.
+
+For Vercel, use the **Next.js** framework preset and the repository root. No custom deployment configuration is required.
+
+## Project structure
+
+| Path | Purpose |
+| --- | --- |
+| `app/` | App Router entry points, metadata, icons, and global styles |
+| `components/` | Hero, project showcase, About/Skills/Contact, and motion behavior |
+| `data/profile.ts` | Identity, contact details, resume, and certification URLs |
+| `data/about.ts` | Biography, interests, and skill groups |
+| `data/projects.ts` | Typed project content and optional links/images |
+| `public/images/` | Optimized portrait and genuine project screenshots |
+| `public/brand/` | Editable original brand artwork |
+| `docs/` | Content provenance, preview workflow, and verification notes |
+
+Update portfolio content in the typed data files. Keep original/private assets in the ignored `references/` directory and publish only website-ready copies. Resume and certification links currently point to owner-supplied Google Drive folders.
+
+## Design and motion
+
+The hero uses one scoped GSAP timeline. Selected Work uses one desktop ScrollTrigger timeline with native CSS sticky positioning; mobile and reduced-motion users receive normal project entries. A shared IntersectionObserver handles ordinary reveals, and Contact includes an original SVG arrow interaction. Timelines, media contexts, and listeners clean up when their scope changes.
+
+See [Design direction](DESIGN.md), [Motion audit](docs/MOTION_AUDIT.md), and [Scroll investigation](docs/SCROLL_INVESTIGATION.md). Profiling and browser media emulation remain documented verification limitations; no measured scrolling-performance improvement is claimed.
+
+## Content provenance
+
+[Project sources](docs/PROJECT_SOURCES.md) records repository evidence, owner-supplied details, screenshots, and evaluation context. EEG figures are preliminary, owner-reported CHB01 baseline results. Public copy should remain grounded in this evidence.
+
+## Contact
+
+[GitHub](https://github.com/rajpatel110) · [LinkedIn](https://www.linkedin.com/in/raj-patel-cse) · [Email](mailto:341raj.patel@gmail.com)

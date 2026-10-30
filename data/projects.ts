@@ -70,7 +70,6 @@ export const moreProjects: readonly Project[] = [
       "SDP offers, answers, and ICE candidates establish subsequent WebRTC media/data connections",
       "STUN assists connectivity and NAT traversal",
     ],
-    note: "Direct connections are not guaranteed. The architecture includes TURN relay fallback; its deployment/configuration is not verified.",
   },
   {
     name: "EEG Seizure Prediction",
@@ -91,7 +90,7 @@ export const moreProjects: readonly Project[] = [
       label: "Evaluation & next steps",
       paragraphs: [
         "Evaluation used accuracy, precision, recall, a confusion matrix, a precision-recall curve, and PR-AUC. No PR-AUC value is reported here.",
-        "Future work: dataset expansion, stronger validation, model experimentation, prediction-horizon analysis, and real-time processing. This baseline does not establish clinical readiness, cross-patient generalization, or a validated warning horizon.",
+        "Future work: dataset expansion, stronger validation, model experimentation, prediction-horizon analysis, and real-time processing.",
       ],
     },
   },
