@@ -57,6 +57,12 @@ Use the actual public domain, including `https://`, without credentials, additio
 
 For Vercel, use the **Next.js** framework preset and the repository root. No custom deployment configuration is required.
 
+## Search indexing
+
+The single-page portfolio publishes `app/sitemap.xml` at `/sitemap.xml`, listing only `https://www.rajpatel.in/`. Section anchors are not separate pages. `app/robots.txt` allows crawling and points to that sitemap.
+
+Keep the production `PORTFOLIO_SITE_URL` set to `https://www.rajpatel.in/` so canonical metadata matches the sitemap. After deploying changes, confirm both public files load, then submit `https://www.rajpatel.in/sitemap.xml` in Google Search Console under **Sitemaps**. Sitemap submission supports discovery; it does not guarantee indexing or ranking. If the primary domain changes, update both static crawl files and the production environment variable together.
+
 ## Project structure
 
 | Path | Purpose |
