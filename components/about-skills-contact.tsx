@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ContactArrow } from "@/components/contact-arrow";
 
 import { about, skillGroups } from "@/data/about";
 import { profile } from "@/data/profile";
@@ -45,9 +46,9 @@ export function AboutSkillsContact() {
         <p className="eyebrow">04 / CONTACT</p>
         <p className="contact-availability"><span aria-hidden="true" />Open to internships & entry-level full-time roles</p>
       </div>
-      <div className="contact-invitation" data-detail-reveal>
-        <h2 id="contact-title">Good things start<br />with a <span>hello.</span></h2>
-        <a className="contact-orbit" href={`mailto:${profile.email}`} aria-label="Start a conversation by email"><span aria-hidden="true">↗</span></a>
+      <div className="contact-invitation">
+        <h2 id="contact-title" data-detail-reveal>Good things start<br />with a <span>hello.</span></h2>
+        <ContactArrow />
       </div>
       <div className="contact-bottom" data-detail-reveal>
         <div className="email-group">

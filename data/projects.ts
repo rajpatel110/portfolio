@@ -10,6 +10,10 @@ export type Project = {
   live?: string;
   image?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  enlargeImage?: boolean;
+  liveRequirement?: string;
   imageCaption?: string;
   liveNote?: string;
   note?: string;
@@ -41,7 +45,13 @@ export const projects: readonly Project[] = [
     highlights: ["Browse developers and manage connection requests", "Accept or reject incoming requests", "Exchange saved messages with accepted connections"],
     repository: "https://github.com/rajpatel110/DevLink",
     live: "https://dev-link-five-tau.vercel.app/",
-    liveNote: "Public entry currently shows navigation only.",
+    liveRequirement: "Sign-in required",
+    image: "/images/projects/devlink-login.webp",
+    imageWidth: 1910,
+    imageHeight: 933,
+    imageAlt: "DevLink login interface with email and password fields.",
+    imageCaption: "LOGIN INTERFACE",
+    enlargeImage: true,
   },
 ];
 

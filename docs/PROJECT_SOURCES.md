@@ -64,3 +64,17 @@ Both existing entries were updated, not duplicated. URLs remain absent for these
 
 ### Refinement checks — 2026-10-30
 Lint, TypeScript, and production build passed. Production preview was stopped before rebuilding and restarted at http://localhost:3001. Both existing compact entries are present once; featured source/live URLs remain unchanged. At actual 390px and 320px widths, expanded research text stays within bounds with no horizontal overflow. Native disclosure toggles via Enter and has visible focus. No local browser console warnings/errors reported. Results and limitations are outside the disclosure and always visible. CSS response is 200 text/css with real baseline/disclosure rules. Shared reveal observer and GSAP code were not changed.
+
+
+## Owner-supplied DevLink login screenshot — 2026-10-30
+The owner supplied the genuine login-screen PNG directly in this conversation. It shows DevLink branding, email/password fields, login, password recovery and sign-up controls. This supersedes the earlier typography-only preview decision; it does not independently establish successful authentication or testing of the full application flow. The exact owner-confirmed live URL remains https://dev-link-five-tau.vercel.app/. Public wording now says "Sign-in required" next to that link; the earlier public-shell observation remains historical evidence above.
+
+Original PNG preserved byte-for-byte at ignored references/devlink-login-source.png. Published asset: public/images/projects/devlink-login.webp, lossless WebP, 1910x933, 16,502 bytes (source PNG 46,897 bytes). No cropping, stretching, interface reconstruction or screenshot content edits. Both the decorative desktop sticky stage and normal/mobile entry use this same typed image data and exact supplied alt text: "DevLink login interface with email and password fields." Real intrinsic dimensions prevent a false 1280x800 layout ratio. A full-size preview link in the normal project actions allows closer inspection on small screens; the aria-hidden decorative stage still contains no controls.
+
+Project facts, featured source/live URLs, GSAP timeline, shared observer and cleanup are unchanged. No DevLink application source was modified.
+
+
+### Screenshot integration checks
+Lint, TypeScript and production build passed. Preview stopped before rebuilding and restarted sequentially at http://localhost:3000/. Actual widths 1440, 390 and 320 were checked. Both image instances loaded with matching aspect ratios; desktop stage changed from PrepPilot (opacity 1/0) to DevLink (0/1), stayed at 90px during its sticky range, and contained no focus targets. Mobile uses the normal image entry. No horizontal overflow; sign-in note and full-size preview action wrap within bounds. The new preview link has visible keyboard focus. Browser console reported no warnings/errors.
+
+Published WebP and its Next-optimized response returned 200 with image content types; referenced CSS returned 200 text/css with real CSS. Original preservation was verified by SHA-256 comparison. Screenshots saved outside the source repository in the chat workspace: devlink-preview-desktop.jpg and devlink-preview-mobile.jpg. No authenticated DevLink flow was tested; no performance measurement or reduced-motion-emulation claim is added by this asset update.

@@ -16,9 +16,29 @@ export function PortfolioHero({ hasPortrait }: { hasPortrait: boolean }) {
   useGSAP(() => {
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", (context) => {
-      gsap.from("[data-reveal]", { y: 26, opacity: 0, duration: .85, stagger: .1, ease: "power3.out", clearProps: "all" });
-      gsap.from(".portrait-card", { rotation: 0, duration: 1.2, ease: "power3.out" });
-      return root.current ? observeReveals(root.current, context) : undefined;
+      // Base markup stays visible. Only this timeline owns the hero entrance.
+      const entrance = gsap.timeline({ defaults: { ease: "power3.out", clearProps: "transform,opacity" } });
+      try {
+        entrance
+          .from(".hero-copy .eyebrow", { y: 10, opacity: 0, duration: .4 }, 0)
+          .from(".hero-name-inner", { yPercent: 115, duration: .85 }, .04)
+          .from(".portrait-card", { y: 30, rotation: 9, opacity: 0, duration: 1.05 }, .08)
+          .from(".hero-statement", { y: 18, opacity: 0, duration: .6 }, .34)
+          .from(".hero-copy .intro", { y: 14, opacity: 0, duration: .55 }, .46)
+          .from(".hero-copy .actions a", { y: 12, opacity: 0, duration: .45, stagger: .08 }, .58)
+          .from(".hero-copy .availability", { y: 8, opacity: 0, duration: .4 }, .76)
+          .from(".portrait-note, .orbit-mark", { y: 10, opacity: 0, duration: .4 }, .72);
+      } catch {
+        entrance.revert();
+      }
+      const hero = root.current?.querySelector(".hero");
+      const showFocusedContent = () => entrance.progress(1);
+      hero?.addEventListener("focusin", showFocusedContent);
+      const disconnect = root.current ? observeReveals(root.current, context) : undefined;
+      return () => {
+        hero?.removeEventListener("focusin", showFocusedContent);
+        disconnect?.();
+      };
     });
     return () => media.revert();
   }, { scope: root });
@@ -30,23 +50,25 @@ export function PortfolioHero({ hasPortrait }: { hasPortrait: boolean }) {
         <a href="#work">Selected work <span aria-hidden="true">↓</span></a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href={profile.certifications} target="_blank" rel="noopener noreferrer" aria-label="Certifications on Google Drive (opens in new tab)">Certifications <Arrow /></a>
+        <a href={profile.resume} target="_blank" rel="noopener noreferrer" aria-label="Resume on Google Drive (opens in new tab)">Resume <Arrow /></a>
         <a className="nav-contact" href="#contact">Let’s talk <Arrow /></a>
       </nav>
     </header>
     <main id="main" tabIndex={-1}>
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow" data-reveal><span className="status-dot" /> AVAILABLE FOR OPPORTUNITIES</p>
-          <h1 id="hero-title" data-reveal>Raj Patel<span className="title-dot">.</span></h1>
-          <p className="hero-statement" data-reveal>Thoughtful interfaces.<br /><span>Full-stack developer.</span></p>
-          <p className="intro" data-reveal>I’m a Computer Science & Cyber Security student, working towards becoming a full-stack developer. Curious about how things work. Even more curious about what I can build.</p>
-          <div className="actions" data-reveal>
+          <p className="eyebrow"><span className="status-dot" /> AVAILABLE FOR OPPORTUNITIES</p>
+          <h1 id="hero-title"><span className="hero-name-mask"><span className="hero-name-inner">Raj Patel<span className="title-dot">.</span></span></span></h1>
+          <p className="hero-statement">Thoughtful interfaces.<br /><span>Full-stack developer.</span></p>
+          <p className="intro">I’m a Computer Science & Cyber Security student, working towards becoming a full-stack developer. Curious about how things work. Even more curious about what I can build.</p>
+          <div className="actions">
             <a className="primary-button" href={`mailto:${profile.email}`}>Let’s build something <Arrow /></a>
             <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="Explore my GitHub profile (opens in new tab)">Explore my GitHub <Arrow /></a>
           </div>
-          <p className="availability" data-reveal>{profile.availability}</p>
+          <p className="availability">{profile.availability}</p>
         </div>
-        <div className="portrait-area" data-reveal>
+        <div className="portrait-area">
           <span className="orbit-mark" aria-hidden="true">✳</span>
           <figure className="portrait-card">
             <div className="portrait-window">
@@ -57,7 +79,7 @@ export function PortfolioHero({ hasPortrait }: { hasPortrait: boolean }) {
           <span className="portrait-note">Always a work in progress.<svg viewBox="0 0 90 45" fill="none" aria-hidden="true"><path d="M3 7c33 30 59 28 78 7m-17 1 18-2-3 17" stroke="currentColor" strokeWidth="1.5" /></svg></span>
         </div>
       </section>
-      <div className="education" data-reveal>
+      <div className="education">
         <div className="education-label"><span aria-hidden="true">↳</span> THE FOUNDATION</div>
         <div><p>{profile.education}</p><span>{profile.institution}</span></div>
         <div className="graduation"><span>GRADUATING</span><p>{profile.graduation}<span className="yellow-dot" aria-hidden="true" /></p></div>
